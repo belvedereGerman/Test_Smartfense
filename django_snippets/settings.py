@@ -15,7 +15,7 @@ SECRET_KEY = config("SECRET_KEY", default="Secret Key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["test-snippets-belvedere.herokuapp.com"]
+ALLOWED_HOSTS = ["https://test-snippets-belvedere-ef69f90ba0cf.herokuapp.com"]
 
 # Application definition
 
