@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Snippet
+from .models import Snippet, Language
 from .forms import SnippetForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -80,10 +81,17 @@ class UserSnippets(View):
         )
 
 # class SnippetsByLanguage
-
+class SnippetsByLanguage(View):
+    def get(self, request, *args, **kwargs):
+        language_name = self.kwargs["language"]
+        snippet_language = Snippet.objects.filter(language__name=language_name)
+        return render(
+            request,
+            "snippets/snippet_list.html",
+            {"snippetlanguage": language_name, "snippets": snippet_language},
+        )
 
     
-
 # class Login
 class Login(View):
     def get(self, request):

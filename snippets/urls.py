@@ -5,7 +5,7 @@ from .views import (
     SnippetDelete,
     SnippetDetails,
     UserSnippets,
-    
+    SnippetsByLanguage,
     Login,
     Logout,
     Index,
@@ -15,6 +15,7 @@ urlpatterns = [
     path('', Index.as_view(), name='index'),
     path('login/', Login.as_view(), name='login'),
     path('logout/', Logout.as_view(), name='logout'),
+    path('snippets/<str:language>', SnippetsByLanguage.as_view(), name='snippet_by_language'),
     path('snippets/add/', SnippetAdd.as_view(), name='snippet_add'),
     path('snippets/edit/<int:id>/', SnippetEdit.as_view(), name='snippet_edit'),
     path('snippets/delete/<int:id>/', SnippetDelete.as_view(), name='snippet_delete'),
