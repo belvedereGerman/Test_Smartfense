@@ -1,5 +1,5 @@
 import os
-
+import dj_database_url
 import django_heroku
 from decouple import config
 
@@ -15,7 +15,7 @@ SECRET_KEY = config("SECRET_KEY", default="Secret Key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["django-snippets-crud.herokuapp.com/"]
+ALLOWED_HOSTS = ["test-snippets-belvedere.herokuapp.com"]
 
 # Application definition
 
@@ -65,10 +65,7 @@ WSGI_APPLICATION = "django_snippets.wsgi.application"
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 # Password validation
