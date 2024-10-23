@@ -1,1 +1,1 @@
-web: gunicorn django_snippets.wsgi --log-file -
+web: gunicorn test-snippets-belvedere.wsgi --log-file -
