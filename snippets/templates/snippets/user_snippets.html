@@ -2,6 +2,15 @@
 {% block content %}
     <div class="row justify-content-md-center">
         <div class="col-md-8">
+            {% if messages %}
+                <div id="message-container">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
             <h1 class="my-3">Snippets de {{ snippetUsername }}</h1>
             {% if snippets %}
                 {% for i in snippets %}

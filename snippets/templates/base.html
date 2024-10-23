@@ -16,7 +16,12 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        {% if request.user.username == i.user.username %}
+        <a class="navbar-brand" href="{% url 'user_snippets' %}">Snippets Project</a>
+        {% else %}
         <a class="navbar-brand" href="{% url 'index' %}">Snippets Project</a>
+        {% endif %}
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,7 +34,7 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Snipets</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'snippet_add' %}">Cargar Snippets</a>
-                        <a class="dropdown-item" href="{% url 'index' %}">Listado de Snippets</a>
+                        
                     </div>
                 </li>
                 {% if user.is_authenticated %}
@@ -61,5 +66,25 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var messageContainer = document.getElementById('message-container');
+                if (messageContainer) {
+                   setTimeout(function() {
+                        var fadeEffect = setInterval(function() {
+                            if (!messageContainer.style.opacity) {
+                                messageContainer.style.opacity = 1;
+                            }
+                            if (messageContainer.style.opacity > 0) {
+                                messageContainer.style.opacity -= 0.1;
+                            } else {
+                                clearInterval(fadeEffect);
+                                messageContainer.style.display = 'none';
+                            }
+                        }, 100);
+                    }, 5000);
+                }
+            });
+        </script>
 </body>
 </html>
