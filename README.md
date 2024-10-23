@@ -17,4 +17,6 @@ pass: 1q2w3e4r
 # heroku
 https://test-snippets-belvedere-ef69f90ba0cf.herokuapp.com/
 
-Notice: intente todos los metodos posibles , modifique base de datos , y al hacer el build , heroku no reconoce el archivo Procterfile.
+#user
+username: belvedere
+pass: 1q2w3e4r
