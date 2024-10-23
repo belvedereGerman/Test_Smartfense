@@ -9,3 +9,7 @@ lenguajes de programación.
 - python manage.py makemigrations
 - python manage.py migrate
 - python manage.py runserver  
+
+#user
+belvedere
+1q2w3e4r
