@@ -1,1 +1,1 @@
-web: gunicorn test-snippets-belvedere.wsgi
+web: gunicorn django_snippets.wsgi
