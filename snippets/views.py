@@ -12,7 +12,7 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 from django.utils.safestring import mark_safe
-from django.db.models import Q
+#from .tasks import send_email_task
 
 # class SnippetAdd
 @method_decorator(login_required, name='dispatch')
@@ -30,6 +30,12 @@ class SnippetAdd(View):
             messages.success(request, 'Snippet creado con éxito.')
             return redirect('user_snippets', snippet.user) 
         return render(request, 'snippets/snippet_form.html', {'form': form})
+    
+    # def sendEmailInSnippetCreation(snippet_name, snippet_description, user_mail):
+        if user_mail:
+            subject = f'Snippet "{snippet_name}" created successfully'
+            body = f'The snippet "{snippet_name}" was created with the following description: \n{snippet_description}'
+            send_email_task.delay(subject, body, user_mail)
 
 # class SnippetEdit
 @method_decorator(login_required, name='dispatch')
