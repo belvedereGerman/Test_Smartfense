@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <h1 class="my-3">{{ snippet.name }}</h1>
+            <h6 class="card-subtitle mb-2 text-muted">Creado: {{ snippet.created }}</h6>
+            <p>{{ snippet.description }}</p>
+            <h6 class="card-subtitle mb-2 text-muted">Actualizado: {{ snippet.updated }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Lenguaje: {{ snippet.language.name }}</h6>
+            
+            <pre>{{ highlighted_code|safe }}</pre>
+            <hr>
+            {% if request.user.username == i.user.username %}
+                <a href="{% url 'snippet_edit' id=i.id %}" class="btn btn-info">Editar</a>
+                <a href="{% url 'snippet_delete' id=i.id %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'user_snippets' %}" class="btn btn-secondary">Volver</a>
+            {% else %}
+                <a href="{% url 'index' %}" class="btn btn-secondary">Volver</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
