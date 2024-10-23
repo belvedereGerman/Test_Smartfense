@@ -11,5 +11,5 @@ lenguajes de programación.
 - python manage.py runserver  
 
 #user
-belvedere
-1q2w3e4r
+username: belvedere
+pass: 1q2w3e4r
