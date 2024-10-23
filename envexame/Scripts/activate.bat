@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\belve\OneDrive\Escritorio\snippets_test-main\envexame
+set VIRTUAL_ENV=C:\Users\belve\OneDrive\Escritorio\test-snippets-belvedere\envexame
 
 if not defined PROMPT set PROMPT=$P$G
 
